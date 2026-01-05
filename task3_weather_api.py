@@ -3,7 +3,7 @@ from task1_config import API_KEY, BASE_URL
 
 def  fetch_weather(city):
     url = f"{BASE_URL}?q={city}&appid={API_KEY}&units=metric"
-    response = requests.get(url)
+    response = requests.get(url, timeout=10)
     response.raise_for_status()
     return response.json()
 
