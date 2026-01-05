@@ -1,8 +1,12 @@
 from task3_weather_api import fetch_weather, parse_weather
-from task4_utils import get_city, display_weather
+from task4_utils import get_cities, display_weather
 
-city = get_city()
-data = fetch_weather(city)
-weather = parse_weather(data)
+cities = get_cities()
 
-display_weather(weather)
+for city in cities:
+    try:
+        data = fetch_weather(city)
+        weather = parse_weather(data)
+        display_weather(weather)
+    except Exception as e:
+        print(f"Could not fetch weather for {city}")

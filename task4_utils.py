@@ -1,10 +1,22 @@
-def get_city():
+def get_cities():
     while True:
-        city = input("Enter city name: ").strip()
+        try:
+            count = int(input("How many cities do you want to check? (1-5): "))
+            if 1 <= count <= 5:
+                break
+            else:
+                print("Pleas enter a number between 1 and 5.")
+        except ValueError:
+            print("Please enter a valid number.")
+    
+    cities = []
+    for i in range(count):
+        city = input(f"Enter city {i + 1} name: ").strip()
         if city:
-            return city
+            cities.append(city)
         else:
-            print("city name cannot be empty. Please try again.")
+            print("City name cannot be empty.")
+    return cities
 
 def display_weather(weather):
     print(f"===========================================")
